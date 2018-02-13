@@ -1,0 +1,39 @@
+#version 330 core
+
+layout (location = 0) in vec3 i_Position;
+layout (location = 1) in vec3 i_VertexNormal;
+layout (location = 2) in vec2 i_UV;
+
+
+layout (location = 1) out vec2 o_UV;
+
+out vec3 position_WorldSpace;
+out vec3 EyeDirection_cameraspace;
+out vec3 Normal_CameraSpace;
+out vec3 LightDirection_cameraspace;
+
+uniform mat4 MVP;
+uniform mat4 MatrixModel;
+uniform mat4 MatrixProjection;
+uniform mat4 MatrixView;
+uniform vec3 LightPosition_WorldPosition;
+
+void main()
+{
+	gl_Position = MVP * vec4(i_Position.x , i_Position.y , i_Position.z , 1.0);
+	
+	position_WorldSpace = ( MatrixModel * vec4(i_Position,1)).xyz;
+
+	
+	vec3 vertexPosition_CameraSpace = ( MatrixView * MatrixModel * vec4(i_Position, 1)).xyz;
+	EyeDirection_cameraspace = vec3(0,0,0) - vertexPosition_CameraSpace;
+
+	vec3 LightPosition_cameraspace = ( MatrixView * vec4(LightPosition_WorldPosition,1)).xyz;
+	LightDirection_cameraspace = LightPosition_cameraspace + EyeDirection_cameraspace;
+	
+	// Normal of the the vertex, in camera space
+	mat4 modelmatrixIT = transpose(inverse(MatrixModel));
+	Normal_CameraSpace = ( MatrixView * modelmatrixIT * vec4(i_VertexNormal,0)).xyz; // Only correct if ModelMatrix does not scale the model ! Use its inverse transpose if not.
+	
+	o_UV =i_UV;
+}

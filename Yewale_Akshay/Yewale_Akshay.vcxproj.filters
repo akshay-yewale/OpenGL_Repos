@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="LoadPNG\lodepng.cpp">
+      <Filter>LoadPNG</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadPNG\lodepng_util.cpp">
+      <Filter>LoadPNG</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CY">
+      <UniqueIdentifier>{253d0f82-c5bb-435d-8bd4-43e99f0b486e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LoadPNG">
+      <UniqueIdentifier>{15202182-dcef-4685-9117-051fc1439f1a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CY\cyBVH.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyColor.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyCore.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyGL.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyHairFile.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyHeap.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyIPoint.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyLightingGrid.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyMatrix.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyPoint.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyPointCloud.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyQuat.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cySampleElim.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cySpatial.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyString.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyTimer.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\cyTriMesh.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="CY\math_3d.h">
+      <Filter>CY</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadPNG\lodepng.h">
+      <Filter>LoadPNG</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadPNG\lodepng_util.h">
+      <Filter>LoadPNG</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CY\LICENSE">
+      <Filter>CY</Filter>
+    </None>
+    <None Include="CY\README.md">
+      <Filter>CY</Filter>
+    </None>
+  </ItemGroup>
+</Project>

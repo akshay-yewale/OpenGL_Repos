@@ -1,0 +1,45 @@
+#version 330 core
+
+layout(location = 1) in vec2 i_UV;
+in vec3 position_WorldSpace;
+in vec3 EyeDirection_cameraspace;
+in vec3 Normal_CameraSpace;
+in vec3 LightDirection_cameraspace;
+
+out vec4 FragColor;
+
+
+uniform vec3 LightPosition_WorldPosition;
+
+uniform sampler2D texUnitD;
+uniform sampler2D texUnitS;
+
+void main()
+{
+	vec4 LightColor = vec4(1,1,1,1);
+	float LightPower = 1.0f;
+	
+	vec4 AmbientColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	vec4 DiffuseColor = vec4(0.0f, 1.0f, 0.0f, 1.0f);
+	vec4 SpecularColor = vec4(0.0f, 0.0f, 1.0f, 1.0f);
+
+	float distance = length( LightPosition_WorldPosition - position_WorldSpace );
+
+	// Normal of the computed fragment, in camera space
+	vec3 n = normalize( Normal_CameraSpace );
+	// Direction of the light (from the fragment to the light)
+	vec3 l = normalize( LightDirection_cameraspace );
+
+	float cosTheta = clamp( dot( n,l ), 0,1 );
+
+	vec4 fragmentColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	vec3 ambient = AmbientColor.xyz * 0.1;
+
+
+	vec3 E = normalize(EyeDirection_cameraspace);
+	vec3 R = reflect(-l,n);
+	float cosAlpha = clamp( dot( E,R ), 0,1 );
+
+	FragColor = vec4(ambient.xyz, 1.0f) + texture2D(texUnitS, i_UV) * LightColor * 3f * pow(cosAlpha,5) + texture2D(texUnitD, i_UV) * LightColor * LightPower * cosTheta;
+	
+} 
